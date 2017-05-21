@@ -10,7 +10,7 @@ class Artifactory_Test(unittest.TestCase):
   def setUp(self):
     self.__stdoutSaved = sys.stdout
     try:
-        from StringIO import StringIO
+        from io import StringIO
     except ImportError:
         from io import StringIO
     self.__out = StringIO()
@@ -98,7 +98,7 @@ class Artifactory_Test(unittest.TestCase):
 
             result = artifacter.retrieveDependeciesVersions("0.1.2")
 
-        keys = config["DirectDependencies"].keys()
+        keys = list(config["DirectDependencies"].keys())
         for key in keys:
             self.assertEqual("9.9", result[key])
 

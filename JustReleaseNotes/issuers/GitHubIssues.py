@@ -25,12 +25,12 @@ class GitHubIssues(BaseIssues.BaseIssues):
             self.__cache[ticketNumber] = ticketData
 
     def __log(self, message):
-        print ("GitHub Issues: " + message)
+        print(("GitHub Issues: " + message))
         sys.stdout.flush()
         
     def __readJsonInfo(self, ticket):
 
-        if ticket in self.__cache.keys():
+        if ticket in list(self.__cache.keys()):
             self.__log("Cached ticket info for " + ticket)
             return self.__cache[ticket]
         else:

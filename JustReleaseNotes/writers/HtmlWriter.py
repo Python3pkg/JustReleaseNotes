@@ -38,9 +38,9 @@ class HtmlWriter(BaseWriter.BaseWriter):
                 data.append("<sup><small style=\"font-size:10px\"><i> " + date + "</i></small></sup>")
         data.append("</h2>")
 
-        if len(deps.keys()) > 0:
+        if len(list(deps.keys())) > 0:
             data.append('<div style="background: #eee; "><i>Components: ')
-            data.append('; '.join(deps.values()))
+            data.append('; '.join(list(deps.values())))
             data.append('</i></div>')
 
         data.append("<ul>")

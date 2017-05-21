@@ -20,7 +20,7 @@ class JsonWriter(BaseWriter.BaseWriter):
     def printVersionBlock(self, deps, version, date, tickets):
 
         # get the content of a specific version if already present
-        if version in self.versionsAlreadyPresent.keys():
+        if version in list(self.versionsAlreadyPresent.keys()):
             return json.dumps(self.versionsAlreadyPresent[version], indent=2, sort_keys=True)
 
         # sort the ticket

@@ -33,7 +33,7 @@ class BaseWriter:
         return self.versionsAlreadyPresent
 
     def printVersionBlock(self, deps, version, date, tickets):
-        if version in self.versionsAlreadyPresent.keys():
+        if version in list(self.versionsAlreadyPresent.keys()):
             return '\n'.join(self.versionsAlreadyPresent[version]).strip()
         return None
 

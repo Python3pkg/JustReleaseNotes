@@ -27,24 +27,24 @@ def main():
         generate_release_notes(args.config)
 
 def generateForOneWriter(generator, ticketProvider, writerType, directory, fileName):
-    print("\nGenerating using {0}".format(writerType))
+    print(("\nGenerating using {0}".format(writerType)))
 
     writer = JustReleaseNotes.writers.factory.create(writerType, ticketProvider)
 
     if fileName is None:
         fileName = "index{0}".format(writer.getExtension())
 
-    content = u""
+    content = ""
     p = os.path.join(directory, fileName)
     if os.path.isfile(p):
         with io.open(p,'r',encoding='utf8') as f:
             content += f.read()
 
     writer.setInitialContent(content)
-    releaseNotes = u""
+    releaseNotes = ""
     releaseNotes += generator.generateReleaseNotesByPromotedVersions(writer)
 
-    print("\nStoring release notes at {0}".format(os.path.join(directory, fileName)))
+    print(("\nStoring release notes at {0}".format(os.path.join(directory, fileName))))
     fileName = os.path.join(directory, fileName)
     with io.open(fileName,'w',encoding='utf8') as f:
         f.write(releaseNotes)
@@ -59,7 +59,7 @@ def generate_release_notes(configFile):
         if not os.path.isabs(releaseNotesConfig["pathToSave"]):
             releaseNotesConfig["pathToSave"] = os.path.join(currentDir, releaseNotesConfig["pathToSave"])
 
-        for packageName, conf in releaseNotesConfig["packages"].items():
+        for packageName, conf in list(releaseNotesConfig["packages"].items()):
             if "Releases" in conf:
                 releasesConf = conf["Releases"]
                 promotedVersionsInfo = JustReleaseNotes.artifacters.factory.create(releasesConf).retrievePromotedVersions()

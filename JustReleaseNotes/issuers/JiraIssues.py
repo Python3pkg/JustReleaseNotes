@@ -17,7 +17,7 @@ class JiraIssues(BaseIssues.BaseIssues):
             self.ticketRegex = conf["TicketRegex"]
 
     def __log(self, message):
-        print ("Jira: " + message)
+        print(("Jira: " + message))
         sys.stdout.flush()
 
     def __readJsonInfo(self, ticket):
@@ -45,7 +45,7 @@ class JiraIssues(BaseIssues.BaseIssues):
                 "ticket" : ticket,
                 "title" : title }
 
-        if "fields" in data.keys():
+        if "fields" in list(data.keys()):
             fields = data["fields"]
             title = fields["summary"]
             ret["title"] = title

@@ -6,7 +6,7 @@ from mock import Mock, MagicMock, mock_open, patch
 from sys import version_info
 
 if version_info.major == 2:
-    import __builtin__ as builtins
+    import builtins as builtins
 else:
     import builtins
 

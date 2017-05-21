@@ -50,8 +50,8 @@ class ReleaseNotes:
         content = []
         for version in sortedVersions:
 
-            if version in self.__promotedVersionsInfo or len(self.__promotedVersionsInfo.keys()) == 0:
-                print("Generating info for version " + version)
+            if version in self.__promotedVersionsInfo or len(list(self.__promotedVersionsInfo.keys())) == 0:
+                print(("Generating info for version " + version))
 
             for hash in hashesInVersion[version]:
                 latestCommit = self.__repo.gitDatesByHash[hash] if latestCommit < self.__repo.gitDatesByHash[hash] else latestCommit
@@ -63,7 +63,7 @@ class ReleaseNotes:
 
                 ticketsSoFar += self.__ticketProvider.extractTicketsFromMessage(self.__repo.gitCommitMessagesByHash[hash])
 
-            if version in self.__promotedVersionsInfo or len(self.__promotedVersionsInfo.keys()) == 0:
+            if version in self.__promotedVersionsInfo or len(list(self.__promotedVersionsInfo.keys())) == 0:
                 block = self.__printVersionBlock(version, ticketsSoFar, writer, latestCommit)
                 if len(block) > 0:
                     content = [block] + content

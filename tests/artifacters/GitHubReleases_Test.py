@@ -9,7 +9,7 @@ class GitHubReleases_Test(unittest.TestCase):
   def setUp(self):
     self.__stdoutSaved = sys.stdout
     try:
-        from StringIO import StringIO
+        from io import StringIO
     except ImportError:
         from io import StringIO
     self.__out = StringIO()

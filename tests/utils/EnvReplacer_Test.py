@@ -70,17 +70,17 @@ class EnvParser_Test(unittest.TestCase):
         os.environ['ab_12'] = "xy99"
         os.environ['AbAb'] = "ZZZ"
         conf = {
-            u"a" : "ENV[abc]",
+            "a" : "ENV[abc]",
             "c" : {
-                u"x" : "env[ab_12]",
-                u"d" : "Env[AbAb] x eNV[AbAb]"
+                "x" : "env[ab_12]",
+                "d" : "Env[AbAb] x eNV[AbAb]"
             }
         }
         expectedConf = {
-            u"a" : "xyz",
+            "a" : "xyz",
             "c" : {
-                u"x" : "xy99",
-                u"d" : "ZZZ x ZZZ"
+                "x" : "xy99",
+                "d" : "ZZZ x ZZZ"
             }
         }
         self.assertEqual(expectedConf, EnvReplacer.replace(conf))

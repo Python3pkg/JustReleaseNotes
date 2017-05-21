@@ -20,7 +20,7 @@ class Artifactory:
         self.__artifactoryUrl = self.__conf["StorageUrl"]
 
     def __log(self, message):
-        print ("Artifactory: " + message)
+        print(("Artifactory: " + message))
         sys.stdout.flush()
         
     def __retrievePromotionDate(self, version):
@@ -66,7 +66,7 @@ class Artifactory:
         if "DirectDependencies" not in self.__conf:
             return {}
     
-        if len(self.__conf["DirectDependencies"].keys()) == 0:
+        if len(list(self.__conf["DirectDependencies"].keys())) == 0:
             return {}
         
         result = {}
